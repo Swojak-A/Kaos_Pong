@@ -5,7 +5,9 @@ extends Node2D
 # var b = "textvar"
 var screen_size
 var pad_size
-var direction = Vector2(1.0, 0.0)
+var initial_direction = 1
+var direction = Vector2(-1.0, 0.0)
+
 
 # Constant for ball speed (in pixels/second)
 const INITIAL_BALL_SPEED = 240
@@ -56,7 +58,13 @@ func _process(delta):
 			get_node("left_point_count").set_text(str(left_point_count))
 		ball_pos = screen_size*0.5
 		ball_speed = INITIAL_BALL_SPEED
-		direction = Vector2(-1, 0)
+		if (initial_direction == 1):
+			direction = Vector2(1, 0)
+			initial_direction = 0
+		else:
+			direction = Vector2(-1, 0)
+			initial_direction = 1
+			
 	get_node("ball").set_pos(ball_pos)
 	
 	var left_pos = get_node("left").get_pos()
