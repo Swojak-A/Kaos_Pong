@@ -14,6 +14,9 @@ var ball_speed = INITIAL_BALL_SPEED
 # Constant for pads speed
 const PAD_SPEED = 250
 
+var left_point_count = 0
+var right_point_count = 0
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
@@ -63,4 +66,8 @@ func _process(delta):
 		right_pos.y += PAD_SPEED * delta
 	
 	get_node("right").set_pos(right_pos)
+	
+	# Counting points
+	get_node("left_point_count").set_text(str(left_point_count))
+	get_node("right_point_count").set_text(str(right_point_count))
 	
