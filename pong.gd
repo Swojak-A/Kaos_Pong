@@ -23,6 +23,10 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	pad_size = get_node("left").get_texture().get_size()
 	set_process(true)
+	
+	# set counting points to "zero"
+	get_node("left_point_count").set_text(str(left_point_count))
+	get_node("right_point_count").set_text(str(right_point_count))
 
 func _process(delta):
 	var ball_pos = get_node("ball").get_pos()
@@ -43,6 +47,13 @@ func _process(delta):
 		ball_speed *= 1.1
 	# Check gameover
 	if (ball_pos.x < 0 or ball_pos.x > screen_size.x):
+		# update right_point_count
+		if (ball_pos.x < 0):
+			right_point_count += 1
+			get_node("right_point_count").set_text(str(right_point_count))
+		if (ball_pos.x > screen_size.x):
+			left_point_count += 1
+			get_node("left_point_count").set_text(str(left_point_count))
 		ball_pos = screen_size*0.5
 		ball_speed = INITIAL_BALL_SPEED
 		direction = Vector2(-1, 0)
@@ -67,7 +78,5 @@ func _process(delta):
 	
 	get_node("right").set_pos(right_pos)
 	
-	# Counting points
-	get_node("left_point_count").set_text(str(left_point_count))
-	get_node("right_point_count").set_text(str(right_point_count))
+
 	
