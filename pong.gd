@@ -53,17 +53,17 @@ func _process(delta):
 		if (ball_pos.x < 0):
 			right_point_count += 1
 			get_node("right_point_count").set_text(str(right_point_count))
+			initial_direction = 1
 		if (ball_pos.x > screen_size.x):
 			left_point_count += 1
 			get_node("left_point_count").set_text(str(left_point_count))
+			initial_direction = 0
 		ball_pos = screen_size*0.5
 		ball_speed = INITIAL_BALL_SPEED
 		if (initial_direction == 1):
 			direction = Vector2(1, 0)
-			initial_direction = 0
 		else:
 			direction = Vector2(-1, 0)
-			initial_direction = 1
 			
 	get_node("ball").set_pos(ball_pos)
 	
