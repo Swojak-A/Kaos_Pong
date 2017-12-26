@@ -1,0 +1,18 @@
+to-do list:
+- Instructions for main_menu.tscn
+	= between title and VBox_menu
+- main_menu.tscn:
+	= redo pong.tscn - so you can move pads
+	= add node2d + sprite to pick options in menu 
+	= make options in menu pickable with buttons (not only by mouse-click like it is now)
+	= add "Single Player Mode" 
+	= add "Settings"
+	= add "Press Start" - blinking, then visible:off and modes visible:on
+- fullscreen scaling
+- basic AI script
+	= Adv AI script
+- "Single Player Mode" 
+
+
+
+
