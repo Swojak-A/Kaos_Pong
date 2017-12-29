@@ -43,6 +43,7 @@ func _process(delta):
 		direction.y = -direction.y
 	# Flip, change direction and increase speed when touching pads
 	if ((left_rect.has_point(ball_pos) and direction.x < 0) or (right_rect.has_point(ball_pos) and direction.x > 0)):
+		get_node("SamplePlayer").play("boing")
 		direction.x = -direction.x
 		direction.y = randf()*2.0 - 1
 		direction = direction.normalized()
@@ -51,10 +52,12 @@ func _process(delta):
 	if (ball_pos.x < 0 or ball_pos.x > screen_size.x):
 		# update right_point_count
 		if (ball_pos.x < 0):
+			get_node("SamplePlayer").play("coin")
 			right_point_count += 1
 			get_node("right_point_count").set_text(str(right_point_count))
 			initial_direction = 1
 		if (ball_pos.x > screen_size.x):
+			get_node("SamplePlayer").play("coin")
 			left_point_count += 1
 			get_node("left_point_count").set_text(str(left_point_count))
 			initial_direction = 0
