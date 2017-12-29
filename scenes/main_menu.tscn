@@ -41,8 +41,9 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="menu" type="VBoxContainer" parent="."]
 
+visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -54,7 +55,7 @@ margin/right = 510.0
 margin/bottom = 193.0
 alignment = 0
 
-[node name="versus" type="Button" parent="VBoxContainer"]
+[node name="versus" type="Button" parent="menu"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -71,7 +72,7 @@ shortcut = null
 text = "Versus Mode"
 flat = true
 
-[node name="quit" type="Button" parent="VBoxContainer"]
+[node name="quit" type="Button" parent="menu"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -88,8 +89,26 @@ shortcut = null
 text = "Quit Game"
 flat = true
 
-[connection signal="pressed" from="VBoxContainer/versus" to="." method="_on_versus_pressed"]
+[node name="test_button" type="Button" parent="."]
 
-[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 494.0
+margin/top = 350.0
+margin/right = 608.0
+margin/bottom = 370.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "test"
+flat = false
+
+[connection signal="pressed" from="menu/versus" to="." method="_on_versus_pressed"]
+
+[connection signal="pressed" from="menu/quit" to="." method="_on_quit_pressed"]
+
+[connection signal="pressed" from="test_button" to="." method="_on_test_button_pressed"]
 
 

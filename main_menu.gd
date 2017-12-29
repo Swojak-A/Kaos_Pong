@@ -15,3 +15,6 @@ func _on_versus_pressed():
 
 func _on_quit_pressed():
 		get_tree().quit()
+
+func _on_test_button_pressed():
+		get_node("menu").show()
