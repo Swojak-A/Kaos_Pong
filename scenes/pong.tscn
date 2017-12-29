@@ -105,4 +105,35 @@ default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
 
+[node name="pause_menu" type="Panel" parent="."]
+
+process/pause_mode = 2
+visibility/visible = false
+visibility/self_opacity = 0.8
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 640.0
+margin/bottom = 400.0
+
+[node name="pause_off" type="Button" parent="pause_menu"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 456.0
+margin/top = 343.0
+margin/right = 591.0
+margin/bottom = 363.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+
+[connection signal="pressed" from="pause_menu/pause_off" to="." method="_on_pause_off_pressed"]
+
 

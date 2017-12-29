@@ -7,6 +7,7 @@ var screen_size
 var pad_size
 var initial_direction = 1
 var direction = Vector2(-1.0, 0.0)
+var pause_off = true
 
 
 # Constant for ball speed (in pixels/second)
@@ -25,6 +26,7 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	pad_size = get_node("left").get_texture().get_size()
 	set_process(true)
+	set_process_input(true)
 	
 	# set counting points to "zero"
 	get_node("left_point_count").set_text(str(left_point_count))
@@ -89,5 +91,24 @@ func _process(delta):
 	
 	get_node("right").set_pos(right_pos)
 	
-
 	
+
+
+
+func _input(event):
+	if(event.is_action("pad_start") == true) or (event.is_action("ui_accept") == true) and pause_off == true:
+		get_tree().set_pause(true)
+		get_node("pause_menu").show()
+		pause_off = false
+		
+	# not working due to fact that in "set_pause(true)" _input process is frozen - dont know how to fix it
+	if(event.is_action("ui_cancel") == true) and pause_off == false:
+		print("worked")
+		get_tree().set_pause(false)
+		get_node("pause_menu").hide()
+		pause_off = true
+
+func _on_pause_off_pressed():
+	get_tree().set_pause(false)
+	get_node("pause_menu").hide()
+	pause_off = true
