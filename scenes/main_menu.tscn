@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://main_menu.gd" type="Script" id=1]
 [ext_resource path="res://scenes/pong_demo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/origami_pixel.fnt" type="BitmapFont" id=3]
 [ext_resource path="res://assets/pixel_theme.tres" type="Theme" id=4]
 [ext_resource path="res://assets/pixel.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://assets/ost/239539_dambient_8-bit-loop_better.ogg" type="AudioStream" id=6]
 
 [node name="Panel" type="Panel"]
 
@@ -139,6 +140,17 @@ enabled_focus_mode = 2
 shortcut = null
 text = "test"
 flat = false
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 6 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
 
 [connection signal="pressed" from="menu/versus" to="." method="_on_versus_pressed"]
 
